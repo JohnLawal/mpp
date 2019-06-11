@@ -1,0 +1,5 @@
+The implementation for override of the equals() method in Employee class is wrong.
+There is no @Override annotation. The signature does not accept Object as parameter.
+Therefore, although both lists are the same, the contains() method of List interface
+used in the listsAreEqual() method of EmployeeInfo will make use of the equals() method 
+of Object for Employee which will return false even when it should be true.

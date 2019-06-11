@@ -1,0 +1,5 @@
+The removeDuplicates() method in EmployeeInfo uses an Employee object as the key in a HashMap.
+During this process, a hashcode for the each Employee object will be created. Since the Employee
+class did not Override the hashCode() method, different hashcodes will be generated even when the objects
+have the same properties. This will therefore make the containsKey() method used in removeDuplicates() to 
+return false even though a similar Employee was already added to the tracker.

@@ -1,0 +1,3 @@
+The Employee class was allowed to be mutable. Therefore, by the time the visited value is changed for an Employee object, 
+anytime the HashMap gets the hashcode for a similar employee, the hashcode will be different from the previous one used as the key
+and so duplicates will still occur in the new list.
