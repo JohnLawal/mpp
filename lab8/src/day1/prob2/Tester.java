@@ -25,20 +25,10 @@ public class Tester {
 		Collections.sort(products, new productsSorter());
 	}
 	
-	private void dSort(List<Product> products) {
-
-		products.sort((p1,p2)-> {
-			if (p1.getTitle().equals(p2.getTitle())) {
-				return ((Integer) p1.getModel()).compareTo(((Integer) p2.getModel()));
-			}else {
-				return p1.getTitle().compareTo(p2.getTitle());
-			}
-		});
-	}
 
 	public static void main(String[] args) {
 		List<Product> prodList = new ArrayList<>();
-		prodList.add(new Product("Product A", 55.75, 800));
+		prodList.add(new Product("Product A", 55.75, 85));
 		prodList.add(new Product("Product A", 45.75, 81));
 		prodList.add(new Product("Product C", 55.74, 80));
 
@@ -55,7 +45,13 @@ public class Tester {
 		t1.sort(prodList, SortMethod.SORT_BY_TITLE);
 		System.out.println("Sorted By Title using Closure: " + prodList);
 //		D
-		t1.dSort(prodList);
+		prodList.sort((p1,p2)-> {
+			if (p1.getTitle().equals(p2.getTitle())) {
+				return ((Integer) p1.getModel()).compareTo(((Integer) p2.getModel()));
+			}else {
+				return p1.getTitle().compareTo(p2.getTitle());
+			}
+		});
 		System.out.println("Sorted Using Lambdas: " + prodList);
 
 	}
