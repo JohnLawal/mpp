@@ -26,11 +26,7 @@ public class Tester {
 	}
 	
 	private void dSort(List<Product> products) {
-//		Collections.sort(products, (p1,p2) -> {
-//			if (p1.getTitle().equals(p2.getTitle())) {
-//				
-//			}
-//		});
+
 		products.sort((p1,p2)-> {
 			if (p1.getTitle().equals(p2.getTitle())) {
 				return ((Integer) p1.getModel()).compareTo(((Integer) p2.getModel()));
