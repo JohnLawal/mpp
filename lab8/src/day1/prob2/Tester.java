@@ -11,7 +11,7 @@ public class Tester {
 	};
 
 	private void sort(List<Product> products, SortMethod sortMethod) {
-		class productsSorter implements Comparator<Product> {
+		class ProductsSorter implements Comparator<Product> {
 			@Override
 			public int compare(Product product1, Product product2) {
 				if (sortMethod == SortMethod.SORT_BY_PRICE) {
@@ -22,7 +22,7 @@ public class Tester {
 
 			}
 		}
-		Collections.sort(products, new productsSorter());
+		Collections.sort(products, new ProductsSorter());
 	}
 	
 

@@ -11,7 +11,6 @@ public class Main {
 		fruits.forEach(f -> System.out.println(f));
 		System.out.println("\nUsing method reference");
 		fruits.forEach(System.out::println);
-
 	}
 
 }
