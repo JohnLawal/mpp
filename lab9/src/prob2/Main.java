@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 public class Main {
 
 	public static void main(String[] args) {
+//		2. You have a Stream of Integers called myIntStream and you need to output both
+//		the	maximum and minimum values. Write compact code that efficiently accomplishes this. 
+		
 		Optional<Integer> max = getStream().max(Integer::compareTo);
 		Optional<Integer> min = getStream().min(Integer::compareTo);
 
