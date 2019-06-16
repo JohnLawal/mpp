@@ -12,7 +12,6 @@ public class Main {
 
 		System.out.println("Maximum Integer is: " + max.orElse(null));
 		System.out.println("Minimum Integer is: " + min.orElse(null));
-
 	}
 
 	private static Stream<Integer> getStream() {
