@@ -18,8 +18,8 @@ public class Main {
 	}
 
 	private static Stream<Integer> getStream() {
-		Stream<Integer> intStream = Arrays.asList(2, 3, 4, 6, 1, 8, 20).stream();
-		return intStream;
+		Stream<Integer> myIntStream = Arrays.asList(2, 3, 4, 6, 1, 8, 20).stream();
+		return myIntStream;
 	}
 
 }

@@ -3,8 +3,6 @@ package prob7.prob7b;
 import java.util.Arrays;
 import java.util.List;
 
-import prob7.prob7a.Employee;
-
 public class Main {
 
 	public static void main(String[] args) {

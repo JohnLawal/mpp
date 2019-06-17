@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class Section {
 	public static Stream<String> streamSection(Stream<String> stream, int m, int n) {
-		return stream.limit(n).skip(m-1);
+		return stream.limit(n+1).skip(m);
 	}
 
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Section {
 //		Stream input as a first argument in streamSection() method
 		
 		System.out.println("\nFirst Call");
-		streamSection(nextStream(), 1, 5).collect(Collectors.toList()).forEach(System.out::println);
+		streamSection(nextStream(), 0, 5).collect(Collectors.toList()).forEach(System.out::println);
 		System.out.println("\nSecond Call");
 		streamSection(nextStream(), 2, 7).collect(Collectors.toList()).forEach(System.out::println);
 		System.out.println("\nThird Call");

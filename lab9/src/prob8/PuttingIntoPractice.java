@@ -1,6 +1,7 @@
 package prob8;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,9 +19,7 @@ public class PuttingIntoPractice {
 
 		// Query 1: Find all transactions from year 2011 and sort them by value (small
 		// to high).
-		transactions.stream().filter(tran -> tran.getYear() >= 2011)
-				// 'from 2011' not 'for 2011' (I hope there's no semantic conflict here. If
-				// there is, then kindly use == 2011)
+		transactions.stream().filter(tran -> tran.getYear() == 2011)
 				.sorted((tran1, tran2) -> ((Integer) tran1.getValue()).compareTo((Integer) tran2.getValue()))
 				.forEach(System.out::println);
 
@@ -31,7 +30,7 @@ public class PuttingIntoPractice {
 		System.out.println("\n ---All traders from Cambridge sorted by name:");
 		// Query 3: Find all traders from Cambridge and sort them by name.
 		transactions.stream().map(tran -> tran.getTrader()).filter(trader -> trader.getCity().equals("Cambridge"))
-				.map(trader -> trader.getName()).sorted().distinct().forEach(System.out::println);
+				.sorted(Comparator.comparing(Trader::getName)).distinct().forEach(System.out::println);
 
 		System.out.println("\n ---A string of all traders names sorted alphabetically:");
 		// Query 4: Return a string of all traders names sorted alphabetically.
@@ -44,7 +43,7 @@ public class PuttingIntoPractice {
 		Optional<Transaction> milanTrader = transactions.stream()
 				.filter(tran -> tran.getTrader().getCity().equals("Milan")).findFirst();
 
-		System.out.println("Any trader based in Milan? " + milanTrader.isPresent());
+		System.out.println("Any trader based in Milan? " + (milanTrader.isPresent()? "Yes": "No"));
 
 		System.out.println("\n Updating Cities for Traders");
 		// Query 6: Update all transactions so that the traders from Milan are set to

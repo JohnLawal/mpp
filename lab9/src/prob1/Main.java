@@ -13,7 +13,7 @@ public class Main {
 
 		
 		Stream<String> stringStream = Arrays.asList("Bill", "Thomas", "Mary").stream();
-		System.out.println(stringStream.collect(Collectors.joining(",")));
+		System.out.println(stringStream.collect(Collectors.joining(", ")));
 	}
 
 }
