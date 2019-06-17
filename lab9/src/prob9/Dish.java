@@ -1,6 +1,7 @@
 package prob9;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dish {
 
@@ -53,7 +54,38 @@ public class Dish {
 	}
 
 	public static boolean haveCaloriesLessThan1000() {
-		Optional<Dish> healthyDish = Dish.menu.stream().filter(dish -> dish.getCalories() < 1000).findAny();
-		return healthyDish.isPresent();
+		boolean healthyDish = Dish.menu.stream().anyMatch(dish -> dish.getCalories() < 1000);
+		return healthyDish;
 	}
+
+	public static boolean haveCaloriesMoreThan1000() {
+		boolean unhealthyDish = Dish.menu.stream().anyMatch(dish -> dish.getCalories() > 1000);
+		return unhealthyDish;
+	}
+
+	public static Optional<Dish> firstTypeOfMeat() {
+		Optional<Dish> firstMeat = Dish.menu.stream().filter(dish -> dish.getType().equals(Type.MEAT)).findFirst();
+		return firstMeat;
+	}
+
+	public static int calculateTotalCalories() {
+		int totalCalories = Dish.menu.stream().map(dish -> dish.getCalories()).reduce(0, (a, b) -> a + b);
+		return totalCalories;
+	}
+
+	public static int calculateTotalCaloriesMethodReference() {
+		return Dish.menu.stream()
+				.collect(Collectors.summingInt(Dish::getCalories));		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("\nVegetarian Meal Available: " + Dish.vegetarianMealAvailable());
+		System.out.println("\nHealthy menu have calories less than 1000: " + Dish.haveCaloriesLessThan1000());
+		System.out.println("\nUnhealthy menu have calories greater than 1000: " + Dish.haveCaloriesMoreThan1000());
+		System.out.println("\nThe first item for the type of MEAT: " + Dish.firstTypeOfMeat().orElse(null));
+		System.out.println("\nTotal Calories using reduce(): " + Dish.calculateTotalCalories());
+		System.out.println("\nTotal Calories using method reference: " + Dish.calculateTotalCaloriesMethodReference());
+
+	}
+
 }
