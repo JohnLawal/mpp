@@ -1,6 +1,5 @@
 package prob8;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +40,7 @@ public class PuttingIntoPractice {
 		System.out.println(traders);
 
 		System.out.println("\n");
-		// Query 5: Are there any trader based in Milan?
+		// Query 5: Are there any traders based in Milan?
 		Optional<Transaction> milanTrader = transactions.stream()
 				.filter(tran -> tran.getTrader().getCity().equals("Milan")).findFirst();
 
@@ -50,9 +49,12 @@ public class PuttingIntoPractice {
 		System.out.println("\n Updating Cities for Traders");
 		// Query 6: Update all transactions so that the traders from Milan are set to
 		// Cambridge.
-		transactions.stream().filter(tran -> tran.getTrader().getCity().equals("Milan")).map(tran -> tran.getTrader())
-				.collect(Collectors.toList())
-				.forEach(trader -> trader.setCity("Cambridge"));
+		transactions.stream().map(tran -> {
+			if (tran.getTrader().getCity().equals("Milan")) {
+				tran.getTrader().setCity("Cambridge");
+			}
+			return tran;
+		}).forEach(System.out::println);
 
 		// Query 7: What's the highest value in all the transactions?
 		System.out.println("\n Getting Max");
